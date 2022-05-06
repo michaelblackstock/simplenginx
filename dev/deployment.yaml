@@ -31,19 +31,6 @@ spec:
     - protocol: TCP
       port: 80
 ---
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: michael-globaldrum-com
-  namespace: default 
-spec:
-  secretName: michael-globaldrum-com-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  dnsNames:
-  - michael.globaldrum.com
----
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
