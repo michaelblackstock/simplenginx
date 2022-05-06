@@ -19,3 +19,14 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysite-xnginx-service
+spec:
+  selector:
+    app: xnginx
+  ports:
+    - protocol: TCP
+      port: 80
