@@ -39,7 +39,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`michael.globaldrum.com`)/xninx
+  - match: "Host(`michael.globaldrum.com`) && Path('/xginx')"
     kind: Rule
     services:
     - name: mysite-xnginx-service
