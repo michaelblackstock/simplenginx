@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: xnginx-deployment
+  name: saturday-deployment
   labels:
-    app: xnginx
+    app: saturday-nginx
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: xnginx
+      app: saturday-nginx
   template:
     metadata:
       labels:
-        app: xnginx
+        app: saturday-nginx
     spec:
       containers:
-      - name: xnginx
+      - name: saturday-nginx
         image: nginx:1.14.2
         ports:
         - containerPort: 80
@@ -23,27 +23,26 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysite-xnginx-service
+  name: saturday-nginx-service
 spec:
   selector:
-    app: xnginx
+    app: saturday-nginx
   ports:
     - protocol: TCP
       port: 80
 ---
-apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: mysite-nginx-ingress
-  namespace: default
+  namespace: testargo
 spec:
   entryPoints:
     - web
   routes:
-  - match: Path(`/mccoy`)
+  - match: Path(`/saturday`)
     kind: Rule
     services:
-    - name: mysite-xnginx-service
+    - name: saturday-nginx-service
       port: 80
     middlewares:
       - name: dashboard-stripprefix
@@ -55,4 +54,4 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - /mccoy
+      - /saturday
