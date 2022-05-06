@@ -38,7 +38,7 @@ metadata:
   namespace: testargo 
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
   - match: Path(`/saturday`)
     kind: Rule
