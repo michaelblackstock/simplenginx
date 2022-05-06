@@ -34,7 +34,7 @@ spec:
 kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: xnginx-service
+  name: fooxnginx-service
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
@@ -45,6 +45,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: xnginx-service 
+                name: mysite-xnginx-service 
                 port:
                   number: 80
