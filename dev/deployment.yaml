@@ -30,3 +30,17 @@ spec:
   ports:
     - protocol: TCP
       port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mysite-nginx-ingress-secure
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`michael.globaldrum.com`)/xninx
+    kind: Rule
+    services:
+    - name: mysite-xnginx-service
+      port: 80
