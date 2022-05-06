@@ -30,3 +30,30 @@ spec:
   ports:
     - protocol: TCP
       port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mysite-nginx-ingress
+  namespace: testargo
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Path(`/saturday`)
+    kind: Rule
+    services:
+    - name: saturday-nginx-service
+      port: 80
+    middlewares:
+      - name: dashboard-stripprefix
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: dashboard-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /saturday
+
