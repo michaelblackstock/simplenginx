@@ -7,33 +7,33 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: volume-test
+      app: zzzzvolume-test
   template:
     metadata:
       labels:
-        app: volume-test
+        app: zzzzvolume-test
     spec:
       containers:
-      - name: volume-test
+      - name: zzzzvolume-test
         image: httpd:latest
         volumeMounts:
-        - name: volv
+        - name: zzzzvolv
           mountPath: /usr/local/apache2/htdocs
         ports:
           - containerPort: 80
       volumes:
-      - name: volv
+      - name: zzzzvolv
         persistentVolumeClaim:
             claimName: local-path-pvc
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: myvolumn-nginx-service
+  name: zzzzmyvolumn-nginx-service
 spec:
   type: NodePort
   selector:
-    app: volume-test
+    app: zzzzvolume-test
   ports:
     - protocol: TCP
       port: 80
@@ -41,7 +41,7 @@ spec:
 kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: myvolumn-nginx-service
+  name: zzzzmyvolumn-nginx-service
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
@@ -52,6 +52,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: myvolumn-nginx-service
+                name: zzzzmyvolumn-nginx-service
                 port:
                   number: 80
