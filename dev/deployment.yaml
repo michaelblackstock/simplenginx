@@ -35,7 +35,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: michael-globaldrum-com
-  namespace: testargo 
+  namespace: default 
 spec:
   secretName: michael-globaldrum-com-tls
   issuerRef:
@@ -51,7 +51,7 @@ metadata:
   namespace: testargo
 spec:
   entryPoints:
-    - websecure
+    - web
   routes:
   - match: Path(`/saturday`)
     kind: Rule
