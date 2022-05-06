@@ -25,7 +25,7 @@ kind: Service
 metadata:
   name: mysite-xnginx-service
 spec:
-  type: NotePort
+  type: NodePort
   selector:
     app: xnginx
   ports:
