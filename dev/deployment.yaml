@@ -55,3 +55,4 @@ spec:
   stripPrefix:
     prefixes:
       - /saturday
+
