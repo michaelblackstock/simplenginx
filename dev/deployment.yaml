@@ -38,7 +38,7 @@ metadata:
   namespace: testargo
 spec:
   entryPoints:
-    - web
+    - websecure
   routes:
   - match: Path(`/saturday`)
     kind: Rule
@@ -47,6 +47,8 @@ spec:
       port: 80
     middlewares:
       - name: dashboard-stripprefix
+    tls:
+      secretName: michael-globaldrum-com-tls
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
