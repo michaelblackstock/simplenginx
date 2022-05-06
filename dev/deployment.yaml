@@ -45,6 +45,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: xnginx 
+                name: xnginx-service 
                 port:
                   number: 80
