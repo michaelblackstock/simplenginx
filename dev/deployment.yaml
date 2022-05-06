@@ -45,3 +45,14 @@ spec:
     services:
     - name: mysite-xnginx-service
       port: 80
+    middlewares:
+      - name: dashboard-stripprefix
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: dashboard-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /mccoy
