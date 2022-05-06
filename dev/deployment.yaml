@@ -35,7 +35,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: mysite-nginx-ingress
-  namespace: default 
+  namespace: testargo 
 spec:
   entryPoints:
     - websecure
@@ -48,7 +48,7 @@ spec:
     middlewares:
       - name: dashboard-stripprefix
   tls:
-    secretName: michael-globaldrum-com-tls
+    secretName: default/michael-globaldrum-com-tls
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
