@@ -31,19 +31,20 @@ spec:
     - protocol: TCP
       port: 80
 ---
-apiVersion: networking.k8s.io/v1
 kind: Ingress
+apiVersion: networking.k8s.io/v1
 metadata:
-  name: ingress-wildcard-host
+  name: myvolumn-nginx-service
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
 spec:
   rules:
-  - host: michael.globaldrum.com
-    http:
-      paths:
-      - pathType: Prefix
-        path: /nxginx
-        backend:
-          service:
-            name: mysite-xnginx-service 
-            port:
-              number: 80
+    - http:
+        paths:
+          - path: /mccoy
+            pathType: Prefix
+            backend:
+              service:
+                name: xnginx 
+                port:
+                  number: 80
