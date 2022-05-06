@@ -35,7 +35,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: mysite-nginx-ingress
-  namespace: testargo
+  namespace: default 
 spec:
   entryPoints:
     - websecure
